@@ -1,0 +1,22 @@
+.pagination{
+    display: flex;
+    margin: 1.5rem 0;
+    li{
+        list-style-type: none;
+        a{
+            display: block;
+            border: 2px solid $white;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: $white;
+        }
+    }
+}
+
+.active_link{
+    background-color: $blue;
+    a{
+        color: $white!important;
+    }
+}

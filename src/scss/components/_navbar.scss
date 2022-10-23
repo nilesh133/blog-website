@@ -1,0 +1,97 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    background-color: $blackLight;
+    z-index: 1000;
+    &__row{ // => navbar__row
+            // => & = navbar
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+    }
+    &__left {
+        font-weight: bold;
+        font-size: 1.5rem;
+        & a{
+            text-decoration: none;
+            color: $white;
+        }
+    }
+    &__right{
+        display: flex;
+        p{
+            font-size: 1rem;
+            display: inline-block;
+            padding: 0.4rem 1.1rem;
+            cursor: pointer;
+            color: $black;
+            background-color: $white;
+            border-radius: 1rem;
+            transition: all 0.5s;
+            &:hover{
+                background-color: $grayLight;
+            }
+        }
+        & li{ 
+            list-style-type: none;
+            position: relative;
+            margin-top: 0.4rem;
+            &::after{
+                content: "";
+                position: absolute;
+                background-color: $white;
+                width: 80%;
+                height: 0px;
+                top: 90%;
+                left: 11%;
+                // border-top-left-radius: 1rem;
+                // border-top-right-radius: 1rem;
+                transition: height 0.3s;
+            }
+            &:hover{
+                &::after{
+                    height: 2px;
+                }
+            }
+            span{
+                font-size: 1rem;
+                display: inline-block;
+                padding: 0 1.1rem;
+                cursor: pointer;
+                color: $white;
+            }
+            & a{
+                text-decoration: none;
+                font-size: 1rem;
+                color: $white;
+                padding: 0rem 1rem;
+            }
+        }
+    }
+}
+
+@keyframes navbar_anim {
+    from{
+        height: 0px;
+    }
+    to{
+        height: 3px;
+    }
+}
+
+.navbar__active ::after{
+        content: "";
+        position: absolute;
+        background-color: $white;
+        width: 80%;
+        height: 4px;
+        top: 90%;
+        left: 11%;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        transition: height 0.3s;
+}

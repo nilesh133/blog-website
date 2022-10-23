@@ -1,0 +1,72 @@
+.sidebar{
+    background-color: $white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    &__item:first-child{
+        // border-top: 1px solid $postBorder;
+        // border-top-left-radius: 0.5rem;
+        // border-top-right-radius: 0.5rem;
+    }
+    &__item:last-child{
+        // border-bottom-left-radius: 0.5rem;
+        // border-bottom-right-radius: 0.5rem;
+    }
+    &__heading{
+        font-size: 1.3rem;
+        text-align: center;
+        color: $blue;
+        font-weight: bold;
+        border-bottom: 1px solid #30363d;
+        margin-bottom: 1rem;
+    }
+    &__info{
+        border-bottom: 1px solid #30363d;
+        margin-bottom: 1rem;
+        &__profilepic{
+            @extend %flex-center;
+            span{
+              
+                font-size: 2.5rem;
+                color: $white;
+                text-align: center;
+                padding: 1rem;
+                border-radius: 50%;
+                background-color: $col1;
+                width: 5rem;
+                height: 5rem;
+            }
+        }
+        &__individual{
+            margin-bottom: 0.8rem;
+            h4{
+                font-weight: 500;
+                font-size: 1.1rem;
+                color: $col5;
+                margin: 0;
+            }
+            h5{
+                font-weight: 500;
+                font-size: 0.9rem;
+                color: $blue;
+                margin: 0;
+            }
+        }
+    }
+    &__item{
+        text-align: center;
+        border-radius: 0.6rem;
+        // border: 1px solid $postBorder;
+        // border-top: none;
+        &__individual{
+            background-color: $blue;
+            padding: 0.6rem;
+            color: $white;
+            margin-bottom: 0.8rem;
+            border-radius: 0.6rem;
+            a{
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+}

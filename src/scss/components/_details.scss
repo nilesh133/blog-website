@@ -1,0 +1,151 @@
+.detail{
+    background-color: $white;
+    padding: 2rem;
+    margin: 1rem auto;
+    // &__person{
+    //     &__heading{
+    //         color: $grayLight;
+    //         margin-bottom: 0.6rem;
+    //     }
+    //     &__image{
+    //         background-image: url("../../images//default_user.png");
+    //         width: 5rem;
+    //         height: 5rem;
+    //         background-position: center;
+    //         background-size: cover;
+    //         border-radius: 50%;
+    //         border: 5px solid $blue;
+    //     }
+    // }
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        &__avator{
+            @extend %flex-center;
+            width: 3rem;
+            height: 3rem;
+            background-color: $blue;
+            color: $white;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 1rem;
+            border-radius: 50%;
+        }
+        &__userdetails{
+            display: flex;
+            flex-direction: column;
+            span:nth-child(1){
+                font-size: 1.1rem;
+                text-transform: capitalize;
+                color: $black;
+            }
+            span:nth-child(2){
+                font-size: 0.7rem;
+                color: $black;
+            }
+        }
+    }
+    &__image{
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1.3rem;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__details{
+        &__title{
+            margin-bottom: 1rem;
+        }
+        &__body{
+            margin-top: -1rem;
+        }
+    }
+}
+
+.person{
+    margin-bottom: 1rem;
+    &__heading{
+        display: flex;
+        justify-content: space-between;
+        &__icons{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            &__fb{
+                font-size: 0.9rem;
+                background-color: #3b5998;
+                color: white;
+                padding: 0.4rem 0.6rem;
+                margin-right: 0.5rem;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            &__insta{
+                font-size: 0.9rem;
+                background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+                color: white;
+                padding: 0.4rem 0.6rem;
+                margin-right: 0.5rem;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            &__twi{
+                font-size: 0.9rem;
+                background-color: #0072b1;
+                color: white;
+                padding: 0.4rem 0.6rem;
+                margin-right: 0.5rem;  
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            &__pint{
+                font-size: 0.9rem;
+                background-color: #E60023;
+                color: white;
+                padding: 0.4rem 0.6rem;
+                margin-right: 0.5rem;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+        }
+        p{
+            color: $blue;
+            margin-bottom: 0.6rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    }
+    &__details{
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        // width: 30%;
+        &__image{
+            background-image: url("../../images//default_user.png");
+            width: 5rem;
+            height: 5rem;
+            background-position: center;
+            background-size: cover;
+            border-radius: 50%;
+            border: 5px solid $blue;
+        }
+        &__name{
+            display: flex;
+            flex-direction: column;
+            margin-left: 1rem;
+            span:nth-child(1){
+                font-size: 1.1rem;
+                text-transform: capitalize;
+                color: $grayLight;
+            }
+            span:nth-child(2){
+                font-size: 0.7rem;
+                color: $grayLight;
+            }
+        }
+    }
+}

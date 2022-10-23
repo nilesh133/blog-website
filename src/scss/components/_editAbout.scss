@@ -1,0 +1,45 @@
+.edit__about{
+    margin-bottom: 1rem;
+    width: 70%;
+    &__heading{
+        width: 70%;
+        font-weight: 400;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        color: $white;
+        border-bottom: 1px solid #30363d;
+        padding-bottom: 0.5rem;
+    }
+    &__group{
+        width: 70%;
+        margin-bottom: 1.1rem;
+        &__control{
+            width: 100%;
+            padding: 0.4rem;
+            border: 3px solid $gray;
+            outline: none;
+            border-radius: 0.6rem;
+            background: $white;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.5s;
+
+            // border-bottom: 4px solid transparent;
+            &::placeholder{
+                color: $grayDark;
+                letter-spacing: 1px;
+                font-weight: 400;
+            }
+            &:focus{
+                border: 3px solid transparent;
+                box-shadow: 0 0 2px $blue, 0 0 4px $blue, 0 0 6px $blue;
+            }
+        }
+        &__heading{
+            color: $white;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            font-size: 0.8rem;
+        }
+    }
+}

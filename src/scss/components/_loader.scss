@@ -1,0 +1,36 @@
+.loader__container{
+    @extend %fixed-position;
+    @extend %flex-center;
+    background-color: $white;
+    &__item__1{
+        width: 4.3rem;
+        height: 4.3rem;
+        border-radius: 50%;
+        border-top: 0.3rem solid $blue;
+        border-right: 0.3rem solid transparent;
+        border-bottom: 0.3rem solid $blue;
+        border-left: 0.3rem solid $blue;
+        animation: loader1 0.7s linear infinite;
+        @keyframes loader1 {
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    }
+    &__item__2{
+        margin-left: -3.5rem;
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 50%;
+        border-top: 0.3rem solid $blue;
+        border-right: 0.3rem solid $blue;
+        border-bottom: 0.3rem solid $blue;
+        border-left: 0.3rem solid transparent;
+        animation: loader2 0.7s linear infinite;
+        @keyframes loader2 {
+            100%{
+                transform: rotate(-360deg);
+            }
+        }
+    }
+}
