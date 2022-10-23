@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { useState, useEffect } from 'react';
-import 'react-quill/dist/quill.snow.css';
 import { useDispatch, useSelector } from "react-redux";
 import { createAction } from "../store/asyncMethods/PostMethods";
 import toast, { Toaster } from 'react-hot-toast';
