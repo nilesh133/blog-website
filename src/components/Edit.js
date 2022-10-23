@@ -1,8 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet';
 import { useParams, useHistory } from "react-router-dom";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPost, updateAction } from "../store/asyncMethods/PostMethods";
