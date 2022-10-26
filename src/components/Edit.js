@@ -55,7 +55,6 @@ const Edit = () => {
             })
             dispatch({ type: RESET_UPDATE_ERRORS });
         }
-        //dispatch({type: RESET_UPDATE_ERRORS});
     }, [editErrors]);
 
     useEffect(() => {
@@ -126,26 +125,6 @@ const Edit = () => {
                                         <option value="lifestyle">Lifestyle</option>
                                     </select>
                                 </div>
-                            {/* <div className="group">
-                                <label htmlFor="body"></label>
-                                <ReactQuill theme="snow" value={value} onChange={setValue} id="body" />
-                            </div> */}
-                            {/* <div className="group">
-                                <label htmlFor="description">Meta Description</label>
-                                <textarea
-                                    name="description"
-                                    id="description"
-                                    cols="30"
-                                    rows="10"
-                                    defaultValue={state.description}
-                                    onChange={(e) => setState({ ...state, description: e.target.value })}
-                                    className="group__control"
-                                    placeholder="Meta Description..."
-                                    maxLength='150'
-                                ></textarea>
-                                <span className="description_length">{state.description ? state.description.length : 0}/150</span>
-
-                            </div> */}
                             <div className="group">
                                 <label htmlFor="description">Blog Description</label>
                                 <textarea
@@ -158,39 +137,10 @@ const Edit = () => {
                                     onChange={(e) => setState({ ...state, description: e.target.value })}
                                     className="group__control"
                                     placeholder="Write Your Blog Here..."
-                                    // maxLength='150'
                                 ></textarea>
-                                {/* <span className="description_length">{state.description ? state.description.length : 0}/150</span> */}
-
                             </div>
                         </div>
                     </div>
-                    {/* <div className="col-6" style={{ padding: "1rem" }}>
-                        <div className="card">
-                            <div className="card__h3">Edit post</div>
-
-                           
-                            
-                            <div className="group">
-                                <label htmlFor="description">Meta Description</label>
-                                <textarea
-                                    name="description"
-                                    id="description"
-                                    cols="30"
-                                    rows="10"
-                                    defaultValue={state.description}
-                                    onChange={(e) => setState({ ...state, description: e.target.value })}
-                                    className="group__control"
-                                    placeholder="Meta Description..."
-                                    maxLength='150'
-                                ></textarea>
-                                <span className="description_length">{state.description ? state.description.length : 0}/150</span>
-
-                            </div>
-
-                        </div>
-                    </div> */}
-
                 </div>
             </form>
         </div>

@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { createAction } from "../store/asyncMethods/PostMethods";
 import toast, { Toaster } from 'react-hot-toast';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../firebase";
+import { v4 } from "uuid";
 
 const Create = (props) => {
     const { createErrors, redirect } = useSelector((state) => state.PostReducer);
@@ -11,31 +14,27 @@ const Create = (props) => {
     const dispatch = useDispatch();
     const { user: { _id, name } } = useSelector(state => state.AuthReducer);
 
-    const [currImage, setCurrImage] = useState('Click to select image');
+    const [imageName, setImageName] = useState(null);
     const [imagePreview, setImagePreview] = useState('');
+
     const fileHandle = (e) => {
         if (e.target.files.length !== 0) {
-            setCurrImage(e.target.files[0].name);
-            setState({
-                ...state,
-                [e.target.name]: e.target.files[0]
-            })
+            setImageName(e.target.files[0]);
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result);
             }
-            console.log(setImagePreview);
             reader.readAsDataURL(e.target.files[0]);
         }
-
     }
-    const [value, setValue] = useState('');
+
     const [state, setState] = useState({
         title: '',
         description: '',
         category: 'technology',
         image: ''
     });
+
     const [categoryVal, setcategoryVal] = useState('technology');
 
     const handleDescription = (e) => {
@@ -44,7 +43,6 @@ const Create = (props) => {
             [e.target.name]: e.target.value
         })
     }
-
 
     const [slug, setSlug] = useState('');
     const [slugButton, setSlugButton] = useState(false);
@@ -74,17 +72,20 @@ const Create = (props) => {
 
     const createPost = (e) => {
         e.preventDefault();
-        const { title, category, description, image } = state;
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('category', categoryVal);
-        // formData.append('body', value);
-        formData.append('image', image);
-        formData.append('description', description);
-        formData.append('slug', slug);
-        formData.append('name', name);
-        formData.append('id', _id);
-        dispatch(createAction(formData));
+        const imageRef = ref(storage, `allPostImages/${imageName.name + v4()}`);
+        uploadBytes(imageRef, imageName).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                dispatch(createAction({
+                    title: state.title,
+                    slug: slug,
+                    category: categoryVal,
+                    imageUrl: url,
+                    description: state.description,
+                    id: _id
+                })
+                );
+            });
+        })
     }
 
     useEffect(() => {
@@ -189,7 +190,7 @@ const Create = (props) => {
 
                                 <div className="group">
                                     <label htmlFor="">Select Image</label>
-                                    <label htmlFor="image" className="image__label" style = {{textAlign: "center"}}>{currImage}</label>
+                                    <label htmlFor="image" className="image__label" style={{ textAlign: "center" }}>{imageName === null ? "Click to select image" : imageName.name}</label>
                                     <input type="file"
                                         name="image"
                                         id="image"
@@ -213,7 +214,7 @@ const Create = (props) => {
                                 <div className="group">
                                     <label htmlFor="description">Blog Description</label>
                                     <textarea
-                                    style = {{height: "400px"}}
+                                        style={{ height: "400px" }}
                                         name="description"
                                         id="description"
                                         cols="10"
@@ -222,54 +223,12 @@ const Create = (props) => {
                                         onChange={handleDescription}
                                         className="group__control"
                                         placeholder="Write Your Blog Here..."
-                                        // maxLength='150'
                                     ></textarea>
-                                    {/* <span className="description_length">{state.description ? state.description.length : 0}/150</span> */}
-
                                 </div>
 
 
                             </div>
                         </div>
-                        {/* <div className="col-6" style={{ padding: "1rem" }}>
-                            <div className="card">
-                                <div className="group">
-                                    <label htmlFor="slug">Post URL</label>
-                                    <input type="text"
-                                        name="slug"
-                                        value={slug}
-                                        id="slug"
-                                        className="group__control"
-                                        onChange={slugHandle}
-                                        placeholder="Post URL" />
-                                </div>
-                                <div className="group">
-                                    {slugButton ? (<button className="btn" onClick={handleURL}>Update Slug</button>) : ''}
-                                </div>
-                                <div className="group">
-                                    <label htmlFor="">Image Preview Will Appear Here</label>
-                                    <div className="imagePreview">
-                                        {imagePreview ? <img src={imagePreview} /> : ''}
-                                    </div>
-                                </div>
-                                <div className="group">
-                                    <label htmlFor="description">Meta Description</label>
-                                    <textarea
-                                        name="description"
-                                        id="description"
-                                        cols="30"
-                                        rows="10"
-                                        defaultValue={state.description}
-                                        onChange={handleDescription}
-                                        className="group__control"
-                                        placeholder="Meta Description..."
-                                        maxLength='150'
-                                    ></textarea>
-                                    <span className="description_length">{state.description ? state.description.length : 0}/150</span>
-
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </form>
             </div>

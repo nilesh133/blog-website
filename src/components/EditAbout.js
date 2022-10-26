@@ -25,7 +25,6 @@ const EditAbout = () => {
     });
 
     useEffect(() => {
-        // if (userUpdateStatus) {
         setUserDetails({
             name: user.name,
             email: user.email,
@@ -34,13 +33,10 @@ const EditAbout = () => {
             phone: user.phone,
             age: user.age
         })
-        // dispatch({type: UPDATE_ABOUT_RESET});
-        // }
     }, [user])
 
     const updateAboutMethod = (e) => {
         e.preventDefault();
-        // dispatch(updateNameAction({ name: userName, id: _id }));
         dispatch(updateAboutAction({
             id: user._id,
             name: userDetails.name,

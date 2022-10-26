@@ -20,23 +20,22 @@ import {
 export const createAction = (postData) => {
     return async (dispatch, getState) => {
         const { AuthReducer: { token } } = getState();
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
         dispatch({ type: SET_LOADER });
         try {
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
-            const { data: { msg } } = await axios.post("https://blog-web-mern.herokuapp.com/createpost", postData, config);
+            const { data } = await axios.post("https://blog-web-mern.herokuapp.com/createpost", postData, config);
             dispatch({ type: CLOSE_LOADER });
-            dispatch({ type: REMOVE_ERRORS });
             dispatch({ type: REDIRECT_TRUE });
-            dispatch({ type: SET_MESSAGE, payload: msg });
+            dispatch({ type: SET_MESSAGE, payload: data.msg });
         } catch (error) {
-            console.log(error.response);
-            const { errors } = error.response.data;
+            const { response: { data: { errors } } } = error;
             dispatch({ type: CLOSE_LOADER });
-            dispatch({ type: CREATE_ERRORS, payload: errors });
+            dispatch({ type: SET_UPDATE_ERRORS, payload: errors });
         }
     }
 }
@@ -79,7 +78,6 @@ export const fetchPost = (id) => {
 
         } catch (error) {
             dispatch({ type: CLOSE_LOADER });
-            console.log(error.message);
         }
     }
 }
@@ -99,13 +97,11 @@ export const updateAction = (updatedPost) => {
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: REDIRECT_TRUE });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
-            console.log(data);
 
         } catch (error) {
             const { response: { data: { errors } } } = error;
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: SET_UPDATE_ERRORS, payload: errors });
-            console.log(error.response);
         }
     }
 }
@@ -129,31 +125,15 @@ export const updateImageAction = (updatedImage) => {
             const {response: {data: {errors}}} = error;
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: UPDATE_IMAGE_ERROR,  payload: errors});
-            console.log(error.response);
         }
     }
 }
-
-// export const homePosts = (page) => {
-//     return async(dispatch) => {
-//         dispatch({type: SET_LOADER});
-//         try{
-//             const{data: {response, count, perPage}} = await axios.get(`/home/${page}`);
-//             dispatch({type: CLOSE_LOADER});
-//             dispatch({type: SET_POSTS, payload: {response, count, perPage}});
-//         }catch(error){
-//             console.log(error);
-//             dispatch({type: CLOSE_LOADER});
-//         }
-//     }
-// }
 
 export const homeTestingPosts = () => {
     return async(dispatch) => {
         dispatch({type: SET_LOADER});
         try{
             const{data} = await axios.get("https://blog-web-mern.herokuapp.com/homeTesting");
-            console.log(data);
             dispatch({type: SET_HOME_POSTS, payload: data});
             dispatch({type: CLOSE_LOADER});
         }
@@ -172,7 +152,6 @@ export const postDetailView = (id) => {
             dispatch({type: CLOSE_LOADER});
         }
         catch(error){
-            console.log(error);
             dispatch({type: CLOSE_LOADER});
         }
     }

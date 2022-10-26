@@ -20,10 +20,8 @@ export const updateNameAction = (user) => {
             dispatch({ type: SET_TOKEN, payload: data.token });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
             dispatch({ type: REDIRECT_TRUE });
-            // console.log(data);
         } catch (error) {
             dispatch({ type: CLOSE_LOADER });
-            // console.log(error.response);
             dispatch({ type: SET_PROFILE_ERRORS, payload: error.response.data.errors });
         }
     }
@@ -44,11 +42,9 @@ export const updatePasswordAction = (userData) => {
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
             dispatch({ type: REDIRECT_TRUE });
-            // console.log(data);
         } catch (error) {
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: SET_PASSWORD_UPDATE_ERRORS, payload: error.response.data.errors });
-            console.log(error.response);
         }
     }
 }
@@ -72,9 +68,7 @@ export const updateAboutAction = (user) => {
             dispatch({ type: REDIRECT_TRUE });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
            
-            // console.log(data);
         } catch (error) {
-            console.log(error.response);
             dispatch({ type: SET_ABOUT_UPDATE_ERRORS, payload: error.response.data.errors });
             dispatch({ type: CLOSE_LOADER });
         }
@@ -99,10 +93,8 @@ export const updateEmailAction = (user) => {
             dispatch({ type: SET_TOKEN, payload: data.token });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
             dispatch({ type: REDIRECT_TRUE });
-            // console.log(data);
         } catch (error) {
             dispatch({ type: CLOSE_LOADER });
-            // console.log(error.response);
             dispatch({ type: SET_PROFILE_ERRORS, payload: error.response.data.errors });
         }
     }
@@ -120,16 +112,14 @@ export const updateUsernameAction = (user) => {
         };
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('/=https://blog-web-mern.herokuapp.com/updateusername', user, config);
+            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updateusername', user, config);
             dispatch({ type: CLOSE_LOADER });
             localStorage.setItem('myToken', data.token);
             dispatch({ type: SET_TOKEN, payload: data.token });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
             dispatch({ type: REDIRECT_TRUE });
-            // console.log(data);
         } catch (error) {
             dispatch({ type: CLOSE_LOADER });
-            // console.log(error.response);
             dispatch({ type: SET_PROFILE_ERRORS, payload: error.response.data.errors });
         }
     }
@@ -153,10 +143,8 @@ export const updateProfessionAction = (user) => {
             dispatch({ type: SET_TOKEN, payload: data.token });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
             dispatch({ type: REDIRECT_TRUE });
-            // console.log(data);
         } catch (error) {
             dispatch({ type: CLOSE_LOADER });
-            // console.log(error.response);
             dispatch({ type: SET_PROFILE_ERRORS, payload: error.response.data.errors });
         }
     }
@@ -180,10 +168,8 @@ export const updatePhoneAction = (user) => {
             dispatch({ type: SET_TOKEN, payload: data.token });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
             dispatch({ type: REDIRECT_TRUE });
-            // console.log(data);
         } catch (error) {
             dispatch({ type: CLOSE_LOADER });
-            // console.log(error.response);
             dispatch({ type: SET_PROFILE_ERRORS, payload: error.response.data.errors });
         }
     }
@@ -207,10 +193,8 @@ export const updateAgeAction = (user) => {
             dispatch({ type: SET_TOKEN, payload: data.token });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
             dispatch({ type: REDIRECT_TRUE });
-            // console.log(data);
         } catch (error) {
             dispatch({ type: CLOSE_LOADER });
-            // console.log(error.response);
             dispatch({ type: SET_PROFILE_ERRORS, payload: error.response.data.errors });
         }
     }

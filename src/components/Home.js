@@ -13,24 +13,10 @@ const Home = () => {
     useEffect(() => {
         dispatch(homeTestingPosts());
     }, [])
-    // let { page } = useParams();
-
-    // if(page === undefined){
-    //     page = 1;
-    // }
 
     const { loading } = useSelector(state => state.PostReducer);
     const { homePosts } = useSelector(state => state.HomeTestingPosts);
-    // const [allPosts, setAllPosts] = useState(homePosts);
-    // const { posts } = useSelector((state) => state.FetchPosts);
     const dispatch = useDispatch();
-    // console.log(posts);
-
-    console.log(homePosts);
-    // console.log(allPosts);
-    // console.log(page);
-    // console.log(count);
-    // console.log(perPage);
     return (
         <>
             <Helmet>

@@ -5,6 +5,7 @@ export const postRegister =  (state) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
+                'mode': 'no-cors'
             },
         };
         dispatch({ type: SET_LOADER});
@@ -16,7 +17,6 @@ export const postRegister =  (state) => {
         } catch(err){
             dispatch({ type: CLOSE_LOADER});
             dispatch({ type: REGISTER_ERRORS, payload: err.response.data.errors});
-            console.log(err.response);
         }
     }
 }
@@ -33,14 +33,12 @@ export const postLogin = (state) => {
             
             const {data} = await axios.post("https://blog-web-mern.herokuapp.com/login", state, config);
             dispatch({ type: SET_LOGIN_MESSAGE, payload: data.msg });
-            console.log(data);
             dispatch({ type: CLOSE_LOADER});
             localStorage.setItem('myToken', data.token);
             dispatch({type: SET_TOKEN, payload: data.token});
             
         } catch (error) {
             dispatch({ type: CLOSE_LOADER});
-            console.log(error.response);
             dispatch({ type: LOGIN_ERRORS, payload: error.response.data.errors});
             
         }

@@ -31,8 +31,6 @@ const Register = (props) => {
     const userRegister = async (e) => {
         e.preventDefault();
         dispatch(postRegister(state));
-
-        // console.log(state);
     }
 
     useEffect(() => {
@@ -96,7 +94,6 @@ const Register = (props) => {
                                         onChange={handleInputs}
                                     />
                                 </div>
-                                {/* New Start */}
                                 <div className="group">
                                     <h4>Username</h4>
                                     <span className="group__icons"><BsFileEarmarkPerson /></span>
@@ -149,12 +146,9 @@ const Register = (props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* New End */}
-                                {/* New Start */}
                                 <div className = "group__half">
                                     <div className="group__half__container">
                                         <h4>Password</h4>
-                                        {/* <span className="group__half__icons"><RiLockPasswordLine /></span> */}
                                         <input type="password"
                                             className="group__half__control"
                                             placeholder="Enter Your Password"
@@ -164,10 +158,8 @@ const Register = (props) => {
                                         />
                                     </div>
 
-                                    {/* New Start */}
                                     <div className="group__half__container">
                                         <h4>Confirm Password</h4>
-                                        {/* <span className="group__half__icons"><RiLockPasswordLine /></span> */}
                                         <input type="password"
                                             className="group__half__control"
                                             placeholder="Confirm Your Password"
@@ -176,10 +168,7 @@ const Register = (props) => {
                                             onChange={handleInputs}
                                         />
                                     </div>
-                                    {/* New End */}
                                 </div>
-
-                                {/* New end */}
                                 <div className="group">
                                     <input type="submit" className="btn btn-default btn-block" value={loading ? '...' : 'Register'} />
                                 </div>

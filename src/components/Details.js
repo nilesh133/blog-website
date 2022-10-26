@@ -7,7 +7,7 @@ import Loader from './Loader';
 import moment from "moment";
 import { Helmet } from "react-helmet";
 import {FaFacebookF, BsInstagram, FaLinkedinIn, FaPinterestP} from "react-icons/all";
-// const { convert } = require('html-to-text');
+
 const Details = () => {
     const { id } = useParams();
     const { loading, detailPost } = useSelector(state => state.PostReducer);
@@ -15,9 +15,6 @@ const Details = () => {
     useEffect(() => {
         dispatch(postDetailView(id));
     }, [id])
-    // console.log(detailPost);
-    // const bodyContentHtml = String(detailPost.description);
-    // const bodyContentText = bodyContentHtml.replace(/<[^>]+>/g, '');
     return (
         <>
             <div className="container">
@@ -68,28 +65,15 @@ const Details = () => {
                                     <h3 className="detail__details__title">
                                         {detailPost.title}
                                     </h3>
-                                    {/* <p className="detail__details__body">
-                                        {detailPost.body}
-                                    </p> */}
                                 </div>
                                 <div className="detail__image">
-                                    <img src={`/images/${detailPost.image}`} alt={detailPost.image} />
+                                    <img src={detailPost.imageUrl} alt={detailPost.image} />
                                 </div>
                                 <div className="detail__header" style={{ marginBottom: "1.5rem" }}>
-
-                                    {/* <div className="detail__header__avator">
-                                        {detailPost.userName ? detailPost.userName[0] : ''}
-                                    </div>
-                                    <div className="detail__header__userdetails">
-                                        <span>{detailPost.userName}</span>
-                                        <span>{moment(detailPost.updatedAt).format("MMM Do YY")}</span>
-                                    </div> */}
                                 </div>
 
                                 <p className="detail__details__body">
-                                    {/* {bodyContentText} */}
                                     {detailPost.description}
-                                    
                                 </p>
 
                             </div>

@@ -23,13 +23,6 @@ const Pagination = ({page, perPage, count}) => {
         return store;
     }
 
-    /*const next = () => {
-        
-        if(page < totalPages){
-            return (<li><Link to = {`/dashboard/${parseInt(page) + 1}`}><i class="zmdi zmdi-arrow-right"></i></Link></li>)
-        }
-    }*/
-
     return totalPages && count > 3 ? (
         <div className = "pagination">{links()}</div>
     ) : ('');

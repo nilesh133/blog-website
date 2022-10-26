@@ -13,7 +13,6 @@ const initState = {
 
 const verifyToken = (token) => {
     const decodeToken = jwt_decode(token);
-    // console.log(decodeToken);
     const expiresIn = new Date(decodeToken.exp * 1000);
     if(new Date() > expiresIn){
         localStorage.removeItem('myToken');
@@ -34,7 +33,6 @@ if(token){
     }
 }
 const AuthReducer = (state = initState, action) => {
-    // console.log(action.payload);
     if(action.type === SET_LOADER){
         return {...state, loading: true}
     }
@@ -46,8 +44,6 @@ const AuthReducer = (state = initState, action) => {
     }
     else if(action.type === SET_TOKEN){
         const decoded = verifyToken(action.payload);
-        // console.log(decoded);
-        // console.log(action.payload);
         const{user} = decoded;
         return {...state, token: action.payload, user: user, registerErrors: [], loginErrors: []}
     }

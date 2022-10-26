@@ -8,7 +8,6 @@ import { RESET_LOGIN_MESSAGE } from "../../store/types/UserTypes";
 const Login = () => {
     const dispatch = useDispatch();
     const { loginErrors, loading, message } = useSelector((state) => state.AuthReducer);
-    console.log(message);
     const [state, setState] = useState({
         email: '',
         password: ''
@@ -118,8 +117,3 @@ const Login = () => {
 }
 
 export default Login
-
-
-// email verification
-// articles view
-// update user photo

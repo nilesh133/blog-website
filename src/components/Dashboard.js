@@ -25,7 +25,6 @@ const Dashboard = () => {
     if (page === undefined) {
         page = 1;
     }
-    console.log(posts);
 
     const dispatch = useDispatch();
 
@@ -65,18 +64,6 @@ const Dashboard = () => {
     const showSettingsOptions = (e) => {
         e.classList.toggle("setting_active");
     }
-    // let settingIcon = document.querySelector(".dashboard__posts__setting__icon");
-    // if(settingIcon != null){
-    //     settingIcon.addEventListener("click", () =>{
-    //         settingIcon.classList.toggle("setting__active");
-    //     })
-    // }
-
-    // const [activeClass, setActiveClass] = useState(false);
-
-    // let activeClassToggle = (e) => {
-    //     setActiveClass(!activeClass);
-    // }
 
     return (
         <>
@@ -125,26 +112,8 @@ const Dashboard = () => {
                                 </div>
 
                                 <div className="dashboard__image">
-                                    <img src={`/images/${post.image}`} alt={post.image} />
+                                    <img src={post.imageUrl} alt={post.image} />
                                 </div>
-                                {/* <div className="dashboard__posts__icons">
-                                        <Link to={`/updateimage/${post._id}`}><BsImageFill style={{ color: "#000" }} /><span>Edit Image</span></Link>
-                                        <Link to={`/edit/${post._id}`}><AiFillEdit style={{ color: "#000" }} /><span>Edit Post</span></Link>
-                                        <span><AiFillDelete onClick={() => deletePost(post._id)} style={{ color: "#000" }} /><span>Delete Post</span></span>
-                                    </div> */}
-
-
-
-                                {/* <div className='dashboard__posts__setting'>
-                                    <div className='dashboard__posts__setting__icon' onClick = {() => activeClassToggle(this)}>
-                                        <div className= {activeClass ? "setting__active" : "setting__hide"}>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div> */}
-
                             </div>
 
 

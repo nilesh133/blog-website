@@ -6,7 +6,6 @@ import { FaRegEdit } from "react-icons/all"
 import { AiFillEdit, MdOutlinePersonOutline, HiOutlineMail, AiOutlinePhone, IoGitNetworkOutline, RiLockPasswordLine, BsFileEarmarkPerson } from 'react-icons/all';
 const About = () => {
     const { user } = useSelector(state => state.AuthReducer);
-    console.log(user);
 
     return (
         <>

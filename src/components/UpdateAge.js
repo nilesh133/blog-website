@@ -68,8 +68,6 @@ const UpdateAge = () => {
                 <div className="card__h3__small">Your Previous Age</div>
                     <input type="text"
                         className="group__control"
-                        // placeholder="Enter Your New Name"
-                        // onChange={(e) => setUserName(e.target.value)}
                         value={age}
                     />
                 </div>

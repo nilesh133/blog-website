@@ -7,6 +7,10 @@ import { updateImageAction } from "../store/asyncMethods/PostMethods";
 import toast, { Toaster } from 'react-hot-toast';
 import { RESET_UPDATE_IMAGE_ERROR } from "../store/types/PostTypes";
 import { postDetailView } from "../store/asyncMethods/PostMethods";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../firebase";
+import { v4 } from "uuid";
+
 const EditImage = () => {
     const { id } = useParams();
     const { push } = useHistory();
@@ -15,23 +19,19 @@ const EditImage = () => {
     useEffect(() => {
         dispatch(postDetailView(id));
     }, [id])
-    const [state, setState] = useState({
-        image: '',
-        imagePreview: '',
-        imageName: 'Select New Image'
-    })
+
+    const [imageName, setImageName] = useState(null);
+    const [imagePreview, setImagePreview] = useState('');
+
     const { updateImageErrors } = useSelector(state => state.UpdateImage);
     const { redirect } = useSelector(state => state.PostReducer);
 
     const fileHandle = (e) => {
         if (e.target.files.length !== 0) {
-
+            setImageName(e.target.files[0]);
             const reader = new FileReader();
             reader.onloadend = () => {
-                setState({
-                    ...state, imagePreview: reader.result, image: e.target.files[0],
-                    imageName: e.target.files[0].name
-                })
+                setImagePreview(reader.result);
             }
             reader.readAsDataURL(e.target.files[0]);
         }
@@ -39,10 +39,16 @@ const EditImage = () => {
 
     const updateImage = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('id', id);
-        formData.append('image', state.image);
-        dispatch(updateImageAction(formData));
+        const imageRef = ref(storage, `allPostImages/${imageName.name + v4()}`);
+        uploadBytes(imageRef, imageName).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                dispatch(updateImageAction({
+                    imageUrl: url,
+                    id: id
+                })
+                );
+            });
+        })
     }
 
     useEffect(() => {
@@ -84,14 +90,14 @@ const EditImage = () => {
                     <div className="card">
                         <div className="card__h3">Update Post Image</div>
                         <form onSubmit={updateImage}>
-                        <div className="group">
+                            <div className="group">
                                 <div className="card__h3__small">Your Previous Image</div>
                                 <div className="imagePreview">
-                                    <img src={`/images/${detailPost.image}`} alt={detailPost.image} />
+                                    <img src={detailPost.imageUrl} alt={detailPost.imageUrl} />
                                 </div>
                             </div>
                             <div className="group">
-                                <label htmlFor="image" className="image__label">{state.imageName}</label>
+                                <label htmlFor="image" className="image__label">{imageName === null ? "Click to select image" : imageName.name}</label>
                                 <input type="file"
                                     name="image"
                                     id="image"
@@ -99,11 +105,11 @@ const EditImage = () => {
                                     onChange={fileHandle}
                                 />
                             </div>
-                            
+
                             <div className="group">
-                            <div className="card__h3__small">Your New Image Will Appear Here</div>
+                                <div className="card__h3__small">Your New Image Will Appear Here</div>
                                 <div className="imagePreview">
-                                    {state.imagePreview ? <img src={state.imagePreview} /> : ''}
+                                    {imagePreview ? <img src={imagePreview} /> : ''}
                                 </div>
                             </div>
                             <div className="group">

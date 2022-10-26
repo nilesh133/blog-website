@@ -15,24 +15,14 @@ const HomeMain = () => {
     }, [redirect])
 
     const { homePosts } = useSelector(state => state.HomeTestingPosts);
-    console.log(homePosts);
     const [allPosts, setAllPosts] = useState(homePosts);
-    // useEffect(() =>{
-    //     function postsInState(){
-    //         setAllPosts(homePosts);
-    //     }
-    //     postsInState();
-    // });
-    console.log(allPosts)
     const filterPosts = (category) => {
         const updatedPosts = homePosts.filter((curr) => {
             return curr.category === category;
         })
         setAllPosts(updatedPosts);
-        console.log(updatedPosts);
     }
 
-    // Active Class Toggle
     const [technologyActive, setTechnologyActive] = useState(false);
     const [entertainmentActive, setEntertainmentActive] = useState(false);
     const [sportsActive, setsportsActive] = useState(false);
@@ -152,49 +142,42 @@ const HomeMain = () => {
 
                 <ul>
                     <li
-                        // onClick={() => setAllPosts(homePosts)}
                         onClick={() => allMainHandler()}
                         className={allActive ? "home__active" : null}
                     >
                         All
                     </li>
                     <li
-                        // onClick={() => filterPosts("technology")}
                         onClick={() => technologyMainHandler("technology")}
                         className={technologyActive ? "home__active" : null}
                     >
                         Technology
                     </li>
                     <li
-                        // onClick={() => filterPosts("entertainment")}
                         onClick={() => entertainmentMainHandler("entertainment")}
                         className={entertainmentActive ? "home__active" : null}
                     >
                         Entertainment
                     </li>
                     <li
-                        // onClick={() => filterPosts("sports")}
                         onClick={() => sportsMainHandler("sports")}
                         className={sportsActive ? "home__active" : null}
                     >
                         Sports
                     </li>
                     <li
-                        // onClick={() => filterPosts("politics")}
                         onClick={() => politicsMainHandler("politics")}
                         className={politicsActive ? "home__active" : null}
                     >
                         Politics
                     </li>
                     <li
-                        // onClick={() => filterPosts("health")}
                         onClick={() => healthMainHandler("health")}
                         className={healthActive ? "home__active" : null}
                     >
                         Health
                     </li>
                     <li
-                        // onClick={() => filterPosts("lifestyle")}
                         onClick={() => lifestyleMainHandler("lifestyle")}
                         className={lifestyleActive ? "home__active" : null}
                     >
