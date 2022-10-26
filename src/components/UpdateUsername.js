@@ -25,7 +25,7 @@ const UpdateUsername = () => {
     }
 
     useEffect(() => {
-        if (updateErrors.length !== 0) {
+        if (updateErrors?.length !== 0) {
             updateErrors.map((error) => {
                 toast.error(error.msg);
             })
