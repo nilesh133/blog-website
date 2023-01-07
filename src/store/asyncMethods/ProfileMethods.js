@@ -14,7 +14,7 @@ export const updateNameAction = (user) => {
         };
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updatename', user, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updatename', user, config);
             dispatch({ type: CLOSE_LOADER });
             localStorage.setItem('myToken', data.token);
             dispatch({ type: SET_TOKEN, payload: data.token });
@@ -38,7 +38,7 @@ export const updatePasswordAction = (userData) => {
         };
         dispatch({ type: SET_LOADER })
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updatepassword', userData, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updatepassword', userData, config);
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
             dispatch({ type: REDIRECT_TRUE });
@@ -61,7 +61,7 @@ export const updateAboutAction = (user) => {
         };
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updateabout', user, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updateabout', user, config);
             dispatch({ type: CLOSE_LOADER });
             // localStorage.setItem('myToken', data.token);
             // dispatch({ type: SET_TOKEN, payload: data.token });
@@ -87,7 +87,7 @@ export const updateEmailAction = (user) => {
         };
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updateemail', user, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updateemail', user, config);
             dispatch({ type: CLOSE_LOADER });
             localStorage.setItem('myToken', data.token);
             dispatch({ type: SET_TOKEN, payload: data.token });
@@ -112,7 +112,7 @@ export const updateUsernameAction = (user) => {
         };
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updateusername', user, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updateusername', user, config);
             dispatch({ type: CLOSE_LOADER });
             localStorage.setItem('myToken', data.token);
             dispatch({ type: SET_TOKEN, payload: data.token });
@@ -137,7 +137,7 @@ export const updateProfessionAction = (user) => {
         };
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updateprofession', user, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updateprofession', user, config);
             dispatch({ type: CLOSE_LOADER });
             localStorage.setItem('myToken', data.token);
             dispatch({ type: SET_TOKEN, payload: data.token });
@@ -162,7 +162,7 @@ export const updatePhoneAction = (user) => {
         };
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updatephone', user, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updatephone', user, config);
             dispatch({ type: CLOSE_LOADER });
             localStorage.setItem('myToken', data.token);
             dispatch({ type: SET_TOKEN, payload: data.token });
@@ -187,7 +187,7 @@ export const updateAgeAction = (user) => {
         };
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/updateage', user, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updateage', user, config);
             dispatch({ type: CLOSE_LOADER });
             localStorage.setItem('myToken', data.token);
             dispatch({ type: SET_TOKEN, payload: data.token });

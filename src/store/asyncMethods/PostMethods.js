@@ -28,7 +28,7 @@ export const createAction = (postData) => {
         }
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post("https://blog-web-mern.herokuapp.com/createpost", postData, config);
+            const { data } = await axios.post("https://blog-website-server-nilesh133.vercel.app/createpost", postData, config);
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: REDIRECT_TRUE });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
@@ -50,7 +50,7 @@ export const fetchPosts = (id, page) => {
                     Authorization: `Bearer ${token}`,
                 },
             }
-            const { data: { response, count, perPage } } = await axios.get(`https://blog-web-mern.herokuapp.com/posts/${id}/${page}`, config);
+            const { data: { response, count, perPage } } = await axios.get(`https://blog-website-server-nilesh133.vercel.app/posts/${id}/${page}`, config);
 
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: SET_POSTS, payload: { response, count, perPage } });
@@ -71,7 +71,7 @@ export const fetchPost = (id) => {
         }
         dispatch({ type: SET_LOADER });
         try {
-            const { data: { post } } = await axios.get(`https://blog-web-mern.herokuapp.com/post/${id}`, config);
+            const { data: { post } } = await axios.get(`https://blog-website-server-nilesh133.vercel.app/post/${id}`, config);
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: SET_POST, payload: post });
             dispatch({ type: POST_REQUEST });
@@ -93,7 +93,7 @@ export const updateAction = (updatedPost) => {
         }
         dispatch({ type: SET_LOADER });
         try {
-            const { data } = await axios.post('https://blog-web-mern.herokuapp.com/editpost', updatedPost, config);
+            const { data } = await axios.post('https://blog-website-server-nilesh133.vercel.app/editpost', updatedPost, config);
             dispatch({ type: CLOSE_LOADER });
             dispatch({ type: REDIRECT_TRUE });
             dispatch({ type: SET_MESSAGE, payload: data.msg });
@@ -117,7 +117,7 @@ export const updateImageAction = (updatedImage) => {
         }
         dispatch({ type: SET_LOADER });
         try {
-            const { data: {msg} } = await axios.post('https://blog-web-mern.herokuapp.com/updateImage', updatedImage, config);
+            const { data: {msg} } = await axios.post('https://blog-website-server-nilesh133.vercel.app/updateImage', updatedImage, config);
             dispatch({ type: CLOSE_LOADER });
             dispatch({type: REDIRECT_TRUE});
             dispatch({type: SET_MESSAGE, payload: msg})
@@ -133,7 +133,7 @@ export const homeTestingPosts = () => {
     return async(dispatch) => {
         dispatch({type: SET_LOADER});
         try{
-            const{data} = await axios.get("https://blog-web-mern.herokuapp.com/homeTesting");
+            const{data} = await axios.get("https://blog-website-server-nilesh133.vercel.app/homeTesting");
             dispatch({type: SET_HOME_POSTS, payload: data});
             dispatch({type: CLOSE_LOADER});
         }
@@ -147,7 +147,7 @@ export const postDetailView = (id) => {
     return async(dispatch) => {
         dispatch({type: SET_LOADER});
         try{
-            const{data: {post}} = await axios.get(`https://blog-web-mern.herokuapp.com/postview/${id}`);
+            const{data: {post}} = await axios.get(`https://blog-website-server-nilesh133.vercel.app/postview/${id}`);
             dispatch({type: SET_DETAIL_VIEW, payload: post});
             dispatch({type: CLOSE_LOADER});
         }

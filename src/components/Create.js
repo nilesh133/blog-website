@@ -20,6 +20,7 @@ const Create = (props) => {
     const fileHandle = (e) => {
         if (e.target.files.length !== 0) {
             setImageName(e.target.files[0]);
+            console.log(e.target.files[0])
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result);

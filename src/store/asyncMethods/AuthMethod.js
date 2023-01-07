@@ -10,7 +10,7 @@ export const postRegister =  (state) => {
         };
         dispatch({ type: SET_LOADER});
         try{
-            const {data} = await axios.post("https://blog-web-mern.herokuapp.com/register", state, config);
+            const {data} = await axios.post("https://blog-website-server-nilesh133.vercel.app/register", state, config);
             dispatch({ type: CLOSE_LOADER});
             localStorage.setItem('myToken', data.token);
             dispatch({type: SET_TOKEN, payload: data.token})
@@ -31,7 +31,7 @@ export const postLogin = (state) => {
         try {
             dispatch({ type: SET_LOADER});
             
-            const {data} = await axios.post("https://blog-web-mern.herokuapp.com/login", state, config);
+            const {data} = await axios.post("https://blog-website-server-nilesh133.vercel.app/login", state, config);
             dispatch({ type: SET_LOGIN_MESSAGE, payload: data.msg });
             dispatch({ type: CLOSE_LOADER});
             localStorage.setItem('myToken', data.token);
